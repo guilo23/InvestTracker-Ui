@@ -63,7 +63,7 @@ export const createUser = async (userData: CreateUserData): Promise<User> => {
 
 export const updateUser = async (userId: string, userData: UpdateUserData): Promise<void> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
+    const response = await fetch(`${API_BASE_URL}/users/update/${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

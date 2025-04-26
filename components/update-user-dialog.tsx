@@ -11,7 +11,6 @@ import { Label } from "@/components/ui/label"
 interface User {
   userId: string
   username: string
-  email: string
   password: string
 }
 
@@ -19,22 +18,20 @@ interface UpdateUserDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   user: User
-  onSubmit: (data: { name: string; email: string; cpf: string }) => void
+  onSubmit: (data: { username: string; password: string }) => void
 }
 
 export default function UpdateUserDialog({ open, onOpenChange, user, onSubmit }: UpdateUserDialogProps) {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    cpf: "",
+    username: "",
+    password: ""
   })
 
   useEffect(() => {
     if (user) {
       setFormData({
-        name: user.username,
-        email: user.email,
-        cpf: user.password,
+        username: user.username,
+        password: user.password
       })
     }
   }, [user])
@@ -58,16 +55,12 @@ export default function UpdateUserDialog({ open, onOpenChange, user, onSubmit }:
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" name="name" value={formData.name} onChange={handleChange} required />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
+              <Label htmlFor="name">Username</Label>
+              <Input id="username" name="username" value={formData.username} onChange={handleChange} required />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" name="password" value={formData.cpf} onChange={handleChange} required />
+              <Input id="password" name="password" value={formData.password} onChange={handleChange} required />
             </div>
           </div>
           <DialogFooter>

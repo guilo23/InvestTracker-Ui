@@ -131,7 +131,6 @@ export default function UsersPage() {
                 <TableRow>
                   <TableHead>Name</TableHead>
                   <TableHead>Email</TableHead>
-                  <TableHead>Password</TableHead>
                   <TableHead>Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -147,7 +146,6 @@ export default function UsersPage() {
                     <TableRow key={user.userId}>
                       <TableCell className="font-medium">{user.username}</TableCell>
                       <TableCell>{user.email}</TableCell>
-                      <TableCell>{user.password}</TableCell>
                       <TableCell>
                         <div className="flex gap-2">
                           <Button
@@ -190,9 +188,9 @@ export default function UsersPage() {
           onSubmit={(data) =>
             handleUpdateUser(selectedUser.userId, {
               ...data,
-              username: selectedUser.username, // Ensure username is included
-              email: selectedUser.email, // Ensure email is included
-              password: selectedUser.password // Ensure password is included
+            //  username: selectedUser.username, // Ensure username is included
+              //password: selectedUser.password // Ensure password is included
+             email: ""
             })
           }
         />
